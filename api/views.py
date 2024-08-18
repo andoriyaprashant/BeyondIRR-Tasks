@@ -6,12 +6,15 @@ from django.contrib.auth import authenticate, get_user_model
 from .serializer import LoginSerializer
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework.permissions import IsAuthenticated
+from .decorators import log_request 
 
 User = get_user_model()
 
 class LoginAPI(APIView):
     authentication_classes = [JWTAuthentication]
     permission_classes = [IsAuthenticated]
+
+    @log_request(record_success=True) 
     def post(self, request):
         try:
             data = request.data
@@ -53,5 +56,7 @@ class LoginAPI(APIView):
 class ProtectedView(APIView):
     permission_classes = [IsAuthenticated]
 
+    @log_request() 
     def get(self, request):
         return Response({"message": "This is a protected view only accessible to authenticated users."})
+
