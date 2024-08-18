@@ -44,7 +44,7 @@ python manage.py runserver
 ## Authentication
 
 ### Login
-**Endpoint:** `/login/`  
+**Endpoint:** `/api/token/`  
 **Method:** POST  
 
 **Request Format:** JSON  
