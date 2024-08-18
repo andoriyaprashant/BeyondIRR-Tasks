@@ -156,3 +156,7 @@ python manage.py test
 ```bash
 pytest --cov=api
 ```
+
+## Task 4: Better Error Logs
+
+The log_request decorator will capture and log the request details and responses. The log entries will be recorded in the logs folder, as configured in our Django settings.
